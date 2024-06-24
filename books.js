@@ -2,8 +2,7 @@
 function Book(title, author, pages) {
     this.title = title;
     this.author = author;
-    this.pages = pages;
-    
+    this.pages = pages;    
 }
 
 // Task 2: Implement a method within the Book object to display book information.
@@ -19,17 +18,26 @@ function addBook(title, author, pages) {
 }
 
 function searchBook(choice, name) {
+    let bookFound = false;
     if (choice.toLowerCase() == "title") {
-        for (const book in books) {
+        for (const book of books) {
             if (name == book.title) {
                 book.display();
+                bookFound = true;
             }
         }
+        if (!bookFound) {
+            console.log("No book found with that title.")
+        }
     } else if (choice.toLowerCase() == "author") {
-        for (const book in books) {
+        for (const book of books) {
             if (name == book.author) {
                 book.display();
+                bookFound = true;
             }
+        }
+        if (!bookFound) {
+            console.log("No book found with that author.")
         }
     } else {
         console.log("Select a valid choice!");
@@ -47,3 +55,14 @@ function addLabels(book) {
     book.title = "Title: " + title;
     book.title = "Author: " + author;
 }
+
+addBook("Title1", "Author1", 99);
+addBook("Title2", "Author2", 100);
+addBook("Title3", "Author3", 101);
+addBook("Title4", "Author4", 102);
+
+searchBook("TITLE", "Title1");
+searchBook("author", "Author4");
+searchBook("TITLE", "Title5");
+
+filterLessThan100Pages();
