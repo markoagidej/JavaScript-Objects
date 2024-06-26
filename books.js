@@ -51,9 +51,16 @@ function filterLessThan100Pages() {
     console.log(booksFiltered)
 }
 
-function addLabels(book) {
-    book.title = "Title: " + title;
-    book.title = "Author: " + author;
+function addLabels1(book) {
+    book.title = "Title: " + book.title;
+    book.author = "Author: " + book.author;
+}
+
+function addLabels() {
+    return books.map(book => ({
+        title: `Title: ${book.title}`,
+        author: `Author: ${book.author}`
+    }));
 }
 
 addBook("Title1", "Author1", 99);
